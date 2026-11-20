@@ -44,15 +44,27 @@
 // Console.WriteLine($"Минимум: {min}");
 // Console.WriteLine($"Максимум: {max}");
 
-int[] numbers = {  12, -5, 8, -3, 14, -7, 2 };
-int sum = 0;
+Console.Write("Введите фамилию и имя: ");
+string fullName = (Console.ReadLine() ?? "").Trim();
 
-foreach (int number in numbers)
+if (string.IsNullOrWhiteSpace(fullName))
 {
-    if (number % 2 == 0)
-    {
-        sum += number;
-    }
+    Console.WriteLine("ФИО не введено.");
+    return;
 }
 
-Console.WriteLine($"Сумма чётных чисел: {sum}");
+int total = 0;
+
+foreach (char symbol in fullName)
+{
+    total += symbol;
+}
+
+int variant = total % 8 + 1;
+
+Console.WriteLine($"Ваш вариант: №{variant}");
+
+
+int[] numbers = { 4, 9, 12, 7, 15, 8, 21, 5 };
+int sum = numbers.Where(n => n % 3 == 0).Sum();
+Console.WriteLine(sum);
